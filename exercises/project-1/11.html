@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap" rel="stylesheet">
+
     <style>
         body {
             background-image: url('background.JPG');
@@ -13,14 +17,16 @@
         }
 
         #menu_page {
-            background-color: rgb(255, 230, 184);
+            background-color: rgb(254, 239, 190);
             margin: 25px 25px 25px 25px;
             border-radius: 10px
         }
 
-        #menu_text {
+        .menutype_text {
+            font-family: "Abril Fatface", serif;
             text-align: center;
-            font-size: 50px;
+            font-size: 40px;
+            padding-top: 20px;
         }
 
         #start_images {
@@ -29,6 +35,9 @@
         }
         
         .menu_items {
+            display: grid;
+            grid-template-columns: 1fr 1.75fr;
+
             border-style: dotted;
             border-radius: 10px;
             padding-top: 10px;
@@ -36,7 +45,7 @@
             padding-bottom: 10px;
             padding-left: 10px;
             margin: 25px 25px 25px 25px;
-            background-color: rgb(239, 194, 201);
+            background-color: rgb(255, 218, 224);
             font-size: 18px;
         }
 
@@ -47,16 +56,25 @@
             margin-top: auto;
         }
 
+        .frame_shadow {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: auto;
+            box-shadow:
+            2px 5px 20px #24294c,
+            -3px -11px 7px #423680 inset;
+        }
+
         .dish_type {
             text-align: center;
             font-weight: 150px;
-            font-size: 20px;
+            font-size: 25px;
             text-transform: uppercase;
         }
 
         table {
             width: 100%;
-            max-width: 500px;
             border-collapse: collapse;
             margin: 0 auto;
         }
@@ -64,9 +82,7 @@
         th {
             text-align: center;
             font-weight: 600;
-            padding: .75rem 1rem;
-            vertical-align: top;
-            width: 50%
+            padding: 10px;
         }
 
         td {
@@ -86,11 +102,59 @@
         }
 
         #info {
-            background: rgb(239, 194, 201);
+            background: rgb(255, 218, 224);
             border-style: dotted;
             border-radius: 10px;
-            padding: .75rem 1rem;
+            padding: 20px;
         }
+
+        .image-panel {
+            width: 1100px;         
+            overflow: hidden;      
+            margin: 50px auto;   
+        }
+
+        .panel-track {
+            display: flex;
+            gap: 10px;             
+            animation: slideInfinite 15s linear infinite;
+        }
+
+       .panel-track img {
+        width: 400px;         
+        height: 300px;         
+        object-fit: cover;
+        
+        }
+
+        @keyframes slideInfinite {
+            0%   { transform: translateX(0); }
+            100% { transform: translateX(-91%); } 
+        }
+
+        .info-map {
+        display: flex;
+        gap: 40px;              
+        margin: 0 auto;
+        }
+
+        #info {
+        flex: 1.25;
+        min-width: 0;                
+        }
+
+        .map {
+        flex: 1;
+        min-width: 0; 
+        }
+
+        .map iframe {
+        width: 100%;
+        height: 100%;
+        border-radius: 12px;
+    }
+
+
         </style>
     </style>
 </head>
@@ -99,12 +163,28 @@
     <img src="logo.png" alt="Songbird Logo" width="200" height="100" class = "image_center"><br>
     </div>
     <div id = "start_images">
-        <img src="songbird.jpg" alt="Songbird Entrance" width="400" height="400">
-        <img src="exterior.png" alt="Exterior" width="400" height="400">
+        <div class = "image-panel">
+            <div class = "panel-track">
+                <img src="songbird.jpg" alt="Songbird Entrance" width="400" height="450">
+                <img src="brunchlayout.png" alt="Brunchlayout" width="400" height="450">
+                <img src="exterior.png" alt="Exterior" width="400" height="450">
+                <img src="drinks.png" alt="Drinks" width="400" height="450">
+                <img src="food.png" alt="Foodlayout" width="400" height="450">
+                <img src="combo.png" alt="Combo" width="400" height="450">
+                <img src="songbird.jpg" alt="Songbird Entrance" width="400" height="450">
+                <img src="brunchlayout.png" alt="Brunchlayout" width="400" height="450">
+                <img src="exterior.png" alt="Exterior" width="400" height="450">
+                <img src="drinks.png" alt="Drinks" width="400" height="450">
+                <img src="food.png" alt="Foodlayout" width="400" height="450">
+                <img src="combo.png" alt="Combo" width="400" height="450">
+
+            </div>
+        </div>
     </div>
+    <div class = "info-map">
     <div id = "info">
     <h2><em>Supporting local isn’t just a philosophy—it’s at the heart of how we cook, connect, and serve.</em></h2>
-    <p >At Songbird, we believe great mornings start with great ingredients. That’s why our menus sing with the best of every season—featuring fresh, locally-sourced produce, responsibly raised meats, and small-batch goods from nearby farms and purveyors who share our commitment to sustainability. We proudly serve Blueprint Coffee, and celebrate the rich flavors of our region with every plate.</p>
+    <p>At Songbird, we believe great mornings start with great ingredients. That’s why our menus sing with the best of every season—featuring fresh, locally-sourced produce, responsibly raised meats, and small-batch goods from nearby farms and purveyors who share our commitment to sustainability. We proudly serve Blueprint Coffee, and celebrate the rich flavors of our region with every plate.</p>
     <table>
     <tbody>
         <tr>
@@ -132,13 +212,17 @@
     </table>
     </div>
 
+    <div class = "map">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d798210.1113541811!2d-91.41529365312499!3d38.6026804!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x87d8b5c8f613e2c5%3A0x2e0a5a07fb7f9483!2sSongbird!5e0!3m2!1sen!2sus!4v1769666987896!5m2!1sen!2sus" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+    </div>
+
     <div id = "menu_page">
-    <h2 id = "menu_text">
-        MENU
+    <span class = "menutype_text">
+    <h2>
+        -------MENU-------
     </h2>
-    <img src="brunch.jpg" alt="Brunch" width="400" height="300"><br>
-    <img src="brunchlayout.png" alt="Brunchlayout" width="400" height="450">
-    <img src="salmon.jpg" alt="Lox Bagel" width="400" height="300" style = "margin-bottom: 50px;">
+    </span>
     <div class = "menu_items">
     <h3 class = "dish_type">Mains</h3>
         <ul>
@@ -147,6 +231,7 @@
                     <p>Aged white cheddar on toasted sourdough with applewood smoked bacon and a fried farm egg. Topped with sea salt and local honey.</p>
                 </ul>
             <p><b>The Classic | 7.00</b></p>
+                <img class = "transparent_images" src="mains1.png" alt="Farm Toast" width="400" height="300">
                 <ul>
                     <p>Aged white cheddar on toasted sourdough topped with sea salt and honey (optional). +$3 Fried Egg, +$5 Bacon</p>
                 </ul>
@@ -202,8 +287,7 @@
         </ul>
     </div>
 
-    <h2 class = "dish_type"><u>Beverages</u></h2>
-    <img src="coffee.jpg" alt="Coffee" width="400" height="300"><br>
+    <h2 class = "menutype_text"><u>Beverages</u></h2>
     <div class = "menu_items">
     <h3 class = "dish_type">Seasonal Drinks & Mocktails</h3>
         <ul>
@@ -259,7 +343,7 @@
                 </ul>
         </ul>
     </div>
-    <h2 class = "dish_type"><u>Gifts</u></h2>
+    <h2 class = "menutype_text"><u>Gifts</u></h2>
     <div class = "menu_items">
         <ul>
             <p><b>Songbird T-shirt | 11.00</b></p>

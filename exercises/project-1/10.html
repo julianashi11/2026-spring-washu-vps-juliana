@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap" rel="stylesheet">
+
     <style>
         body {
             background-image: url('background.JPG');
@@ -13,12 +17,13 @@
         }
 
         #menu_page {
-            background-color: rgb(255, 230, 184);
+            background-color: rgb(254, 239, 190);
             margin: 25px 25px 25px 25px;
             border-radius: 10px
         }
 
         .menutype_text {
+            font-family: "Abril Fatface", serif;
             text-align: center;
             font-size: 40px;
             padding-top: 20px;
@@ -30,6 +35,8 @@
         }
         
         .menu_items {
+            display: grid;
+            grid-template-columns: 1fr 1.75fr;
             border-style: dotted;
             border-radius: 10px;
             padding-top: 10px;
@@ -37,7 +44,7 @@
             padding-bottom: 10px;
             padding-left: 10px;
             margin: 25px 25px 25px 25px;
-            background-color: rgb(239, 194, 201);
+            background-color: rgb(255, 218, 224);
             font-size: 18px;
         }
 
@@ -61,13 +68,12 @@
         .dish_type {
             text-align: center;
             font-weight: 150px;
-            font-size: 20px;
+            font-size: 25px;
             text-transform: uppercase;
         }
 
         table {
             width: 100%;
-            max-width: 500px;
             border-collapse: collapse;
             margin: 0 auto;
         }
@@ -75,9 +81,7 @@
         th {
             text-align: center;
             font-weight: 600;
-            padding: .75rem 1rem;
-            vertical-align: top;
-            width: 50%
+            padding: 10px;
         }
 
         td {
@@ -97,14 +101,14 @@
         }
 
         #info {
-            background: rgb(239, 194, 201);
+            background: rgb(255, 218, 224);
             border-style: dotted;
             border-radius: 10px;
             padding: 20px;
         }
 
         .image-panel {
-            width: 7--0px;         
+            width: 1100px;         
             overflow: hidden;      
             margin: 50px auto;   
         }
@@ -112,32 +116,29 @@
         .panel-track {
             display: flex;
             gap: 10px;             
-            animation: slideInfinite 10s linear infinite;
+            animation: slideInfinite 15s linear infinite;
         }
 
        .panel-track img {
         width: 400px;         
         height: 300px;         
         object-fit: cover;
-        border-radius: 8px;
+        
         }
 
         @keyframes slideInfinite {
             0%   { transform: translateX(0); }
-            100% { transform: translateX(-50%); } 
+            100% { transform: translateX(-91%); } 
         }
 
         .info-map {
         display: flex;
         gap: 40px;              
-        align-items: flex-start;
-        max-width: 1100px;
         margin: 0 auto;
-        padding: 40px 20px;
         }
 
         #info {
-        flex: 1;
+        flex: 1.25;
         min-width: 0;                
         }
 
@@ -149,10 +150,12 @@
         .map iframe {
         width: 100%;
         height: 100%;
-        min-height: 400px;
-        border: 0;
         border-radius: 12px;
     }
+
+        .transparent_images {
+        float: left;
+        }
 
 
         </style>
@@ -170,23 +173,21 @@
                 <img src="exterior.png" alt="Exterior" width="400" height="450">
                 <img src="drinks.png" alt="Drinks" width="400" height="450">
                 <img src="food.png" alt="Foodlayout" width="400" height="450">
+                <img src="combo.png" alt="Combo" width="400" height="450">
                 <img src="songbird.jpg" alt="Songbird Entrance" width="400" height="450">
                 <img src="brunchlayout.png" alt="Brunchlayout" width="400" height="450">
                 <img src="exterior.png" alt="Exterior" width="400" height="450">
                 <img src="drinks.png" alt="Drinks" width="400" height="450">
                 <img src="food.png" alt="Foodlayout" width="400" height="450">
-                <img src="songbird.jpg" alt="Songbird Entrance" width="400" height="450">
-                <img src="brunchlayout.png" alt="Brunchlayout" width="400" height="450">
-                <img src="exterior.png" alt="Exterior" width="400" height="450">
-                <img src="drinks.png" alt="Drinks" width="400" height="450">
-                <img src="food.png" alt="Foodlayout" width="400" height="450">
+                <img src="combo.png" alt="Combo" width="400" height="450">
+
             </div>
         </div>
     </div>
     <div class = "info-map">
     <div id = "info">
     <h2><em>Supporting local isn’t just a philosophy—it’s at the heart of how we cook, connect, and serve.</em></h2>
-    <p class = "text_center">At Songbird, we believe great mornings start with great ingredients. That’s why our menus sing with the best of every season—featuring fresh, locally-sourced produce, responsibly raised meats, and small-batch goods from nearby farms and purveyors who share our commitment to sustainability. We proudly serve Blueprint Coffee, and celebrate the rich flavors of our region with every plate.</p>
+    <p>At Songbird, we believe great mornings start with great ingredients. That’s why our menus sing with the best of every season—featuring fresh, locally-sourced produce, responsibly raised meats, and small-batch goods from nearby farms and purveyors who share our commitment to sustainability. We proudly serve Blueprint Coffee, and celebrate the rich flavors of our region with every plate.</p>
     <table>
     <tbody>
         <tr>
@@ -220,10 +221,11 @@
     </div>
 
     <div id = "menu_page">
-    <h2 class = "menutype_text">
-        MENU
+    <span class = "menutype_text">
+    <h2>
+        -------MENU-------
     </h2>
-    <img class = "frame_shadow" src="salmonframe.png" alt="Lox Bagel" width="400" height="300" style = "margin-bottom: 50px;" >
+    </span>
     <div class = "menu_items">
     <h3 class = "dish_type">Mains</h3>
         <ul>
@@ -288,7 +290,6 @@
     </div>
 
     <h2 class = "menutype_text"><u>Beverages</u></h2>
-    <img class = "frame_shadow" src="coffeeframe.png" alt="Coffee" width="400" height="300"><br>
     <div class = "menu_items">
     <h3 class = "dish_type">Seasonal Drinks & Mocktails</h3>
         <ul>
@@ -344,7 +345,7 @@
                 </ul>
         </ul>
     </div>
-    <h2 class = "dish_type"><u>Gifts</u></h2>
+    <h2 class = "menutype_text"><u>Gifts</u></h2>
     <div class = "menu_items">
         <ul>
             <p><b>Songbird T-shirt | 11.00</b></p>
