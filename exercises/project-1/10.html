@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-image: url('background.JPG');
+            margin: 25px 25px 25px 25px;
+            font-family:'Courier New', Courier, monospace;
+            color: rgb(52, 52, 112)
+        }
+
+        #menu_page {
+            background-color: rgb(255, 230, 184);
+            margin: 25px 25px 25px 25px;
+            border-radius: 10px
+        }
+
+        .menutype_text {
+            text-align: center;
+            font-size: 40px;
+            padding-top: 20px;
+        }
+
+        #start_images {
+            margin-top: 150px;
+            margin-bottom: 50px;
+        }
+        
+        .menu_items {
+            border-style: dotted;
+            border-radius: 10px;
+            padding-top: 10px;
+            padding-right: 15px;
+            padding-bottom: 10px;
+            padding-left: 10px;
+            margin: 25px 25px 25px 25px;
+            background-color: rgb(239, 194, 201);
+            font-size: 18px;
+        }
+
+        .image_center {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: auto;
+        }
+
+        .frame_shadow {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: auto;
+            box-shadow:
+            2px 5px 20px #24294c,
+            -3px -11px 7px #423680 inset;
+        }
+
+        .dish_type {
+            text-align: center;
+            font-weight: 150px;
+            font-size: 20px;
+            text-transform: uppercase;
+        }
+
+        table {
+            width: 100%;
+            max-width: 500px;
+            border-collapse: collapse;
+            margin: 0 auto;
+        }
+
+        th {
+            text-align: center;
+            font-weight: 600;
+            padding: .75rem 1rem;
+            vertical-align: top;
+            width: 50%
+        }
+
+        td {
+            padding: .75rem 1rem;
+        }
+
+        tr + tr {
+            border-top: 1px solid
+        }
+        
+        #banner { 
+            position: absolute; 
+            top: 0; 
+            left: 0; 
+            background-color: white; 
+            width: 100%; 
+        }
+
+        #info {
+            background: rgb(239, 194, 201);
+            border-style: dotted;
+            border-radius: 10px;
+            padding: 20px;
+        }
+
+        .image-panel {
+            width: 7--0px;         
+            overflow: hidden;      
+            margin: 50px auto;   
+        }
+
+        .panel-track {
+            display: flex;
+            gap: 10px;             
+            animation: slideInfinite 10s linear infinite;
+        }
+
+       .panel-track img {
+        width: 400px;         
+        height: 300px;         
+        object-fit: cover;
+        border-radius: 8px;
+        }
+
+        @keyframes slideInfinite {
+            0%   { transform: translateX(0); }
+            100% { transform: translateX(-50%); } 
+        }
+
+        .info-map {
+        display: flex;
+        gap: 40px;              
+        align-items: flex-start;
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 40px 20px;
+        }
+
+        #info {
+        flex: 1;
+        min-width: 0;                
+        }
+
+        .map {
+        flex: 1;
+        min-width: 0; 
+        }
+
+        .map iframe {
+        width: 100%;
+        height: 100%;
+        min-height: 400px;
+        border: 0;
+        border-radius: 12px;
+    }
+
+
+        </style>
+    </style>
+</head>
+<body>
+    <div id = "banner">
+    <img src="logo.png" alt="Songbird Logo" width="200" height="100" class = "image_center"><br>
+    </div>
+    <div id = "start_images">
+        <div class = "image-panel">
+            <div class = "panel-track">
+                <img src="songbird.jpg" alt="Songbird Entrance" width="400" height="450">
+                <img src="brunchlayout.png" alt="Brunchlayout" width="400" height="450">
+                <img src="exterior.png" alt="Exterior" width="400" height="450">
+                <img src="drinks.png" alt="Drinks" width="400" height="450">
+                <img src="food.png" alt="Foodlayout" width="400" height="450">
+                <img src="songbird.jpg" alt="Songbird Entrance" width="400" height="450">
+                <img src="brunchlayout.png" alt="Brunchlayout" width="400" height="450">
+                <img src="exterior.png" alt="Exterior" width="400" height="450">
+                <img src="drinks.png" alt="Drinks" width="400" height="450">
+                <img src="food.png" alt="Foodlayout" width="400" height="450">
+                <img src="songbird.jpg" alt="Songbird Entrance" width="400" height="450">
+                <img src="brunchlayout.png" alt="Brunchlayout" width="400" height="450">
+                <img src="exterior.png" alt="Exterior" width="400" height="450">
+                <img src="drinks.png" alt="Drinks" width="400" height="450">
+                <img src="food.png" alt="Foodlayout" width="400" height="450">
+            </div>
+        </div>
+    </div>
+    <div class = "info-map">
+    <div id = "info">
+    <h2><em>Supporting local isn’t just a philosophy—it’s at the heart of how we cook, connect, and serve.</em></h2>
+    <p class = "text_center">At Songbird, we believe great mornings start with great ingredients. That’s why our menus sing with the best of every season—featuring fresh, locally-sourced produce, responsibly raised meats, and small-batch goods from nearby farms and purveyors who share our commitment to sustainability. We proudly serve Blueprint Coffee, and celebrate the rich flavors of our region with every plate.</p>
+    <table>
+    <tbody>
+        <tr>
+        <th>Location</th>
+        <td>
+            3153 Morganford Ave.<br>
+            St. Louis, MO 63116
+        </td>
+        </tr>
+        <tr>
+        <th>Hours</th>
+        <td>
+            Daily 8am–2pm<br>
+            Closed Tuesdays
+        </td>
+        </tr>
+        <tr>
+        <th>Reservations</th>
+        <td>
+            <a href="https://resy.com/cities/st-louis-mo/venues/songbird">Book on Resy</a><br>
+            Call <a href="tel:13147814344">(314) 781-4344</a>
+        </td>
+        </tr>
+    </tbody>
+    </table>
+    </div>
+
+    <div class = "map">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d798210.1113541811!2d-91.41529365312499!3d38.6026804!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x87d8b5c8f613e2c5%3A0x2e0a5a07fb7f9483!2sSongbird!5e0!3m2!1sen!2sus!4v1769666987896!5m2!1sen!2sus" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+    </div>
+
+    <div id = "menu_page">
+    <h2 class = "menutype_text">
+        MENU
+    </h2>
+    <img class = "frame_shadow" src="salmonframe.png" alt="Lox Bagel" width="400" height="300" style = "margin-bottom: 50px;" >
+    <div class = "menu_items">
+    <h3 class = "dish_type">Mains</h3>
+        <ul>
+            <p><b>The Combo Breakfast Sandwich | 14.00</b></p>
+                <ul>
+                    <p>Aged white cheddar on toasted sourdough with applewood smoked bacon and a fried farm egg. Topped with sea salt and local honey.</p>
+                </ul>
+            <p><b>The Classic | 7.00</b></p>
+                <ul>
+                    <p>Aged white cheddar on toasted sourdough topped with sea salt and honey (optional). +$3 Fried Egg, +$5 Bacon</p>
+                </ul>
+            <p><b>Sprouted Grain English Muffin Sandwich | 14.00</b></p>
+                <ul>
+                    <p>English muffin using flour from Lindley Mill. Served toasted with a turkey sausage patty from Buttonwood Farm, omelette-style egg, micros, and brown butter aioli.</p>
+                </ul>
+            <p><b>Lox on a Sesame Seed Bialy | 16.00</b></p>
+                <ul>
+                    <p>House cured Scottish Salmon thinly sliced with cream cheese, capers, Bee Simple micro greens, pickled red onions, and sieved egg. Bialy is made in-house with sesame seeds.</p>
+                </ul>
+            <p><b>Farm Toast | 14.00</b></p>
+                 <ul>
+                    <p>Songbird’s French toast, soaked in egg custard and griddled with Henry Moore dent corn flour. Topped with seasonal fruit jam & malted whipped cream. +$2 Fried Egg, +$4 Shaved Ham</p>
+                </ul>
+            <p><b>Breakfast Tamale | 14.00</b></p>
+                 <ul>
+                    <p>Filled with cotija cheese, served with stewed black beans, shaved watermelon, cilantro crema, and a fried egg. Add Slagel Farm chorizo. (Vegan option available.)</p>
+                </ul>
+            <p><b>Grassfed Beef Patty Melt | 16.00</b></p>
+                 <ul>
+                    <p>Two beef patties, swiss cheese, 1000 island dressing on rye bread. Served with potato chips</p>
+                </ul>
+            <p><b>Songbird Caesar Salad | 15.00</b></p>  
+                <ul>
+                    <p>Romaine and mixed greens with bacon crumbles, smoked turkey breast, shaved parmesan cheese, pickled red onions, and house-made croutons in a miso vinaigrette</p>
+                </ul>
+        </ul>
+    </div><br>
+    <div class = "menu_items">
+    <h3 class = "dish_type">Light Fare</h3>
+        <ul>
+            <p><b>McKaskle Farm Cheddar Grits | 4.00 </b></p>
+                 <ul>
+                    <p>White corn grits from McKaskle Farm milled like polenta. Pairs well with any main dish.</p>
+                </ul>
+            <p><b>Sugarwitch Yogurt Parfait | 7.50</b></p>
+                 <ul>
+                    <p>Crafted by Sugarwitch for Songbird, our guilt-free breakfast sandwich features a yogurt parfait with plums and a granola crust. Fun & delicious!</p>
+                </ul>
+            <p><b>English Muffin | 3.50</b></p>
+                 <ul>
+                    <p>Toasted English Muffin made in-house with strawberry jam.</p>
+                </ul>
+            <p><b>Sesame Seed Bialy | 5.50</b></p>
+                 <ul>
+                    <p>A traditional Polish bialy, similar to a bagel but without the hole. Toasted with whipped cream cheese for a satisfying bite!</p>
+                </ul>
+            <p><b>Chicken Sausage | 7.00</b></p>
+                 <ul>
+                    <p>Three chicken sausage links from Buttonwood Farm. Patties on request.</p>
+                </ul>
+        </ul>
+    </div>
+
+    <h2 class = "menutype_text"><u>Beverages</u></h2>
+    <img class = "frame_shadow" src="coffeeframe.png" alt="Coffee" width="400" height="300"><br>
+    <div class = "menu_items">
+    <h3 class = "dish_type">Seasonal Drinks & Mocktails</h3>
+        <ul>
+            <p><b>Confluence Kombucha | 5.00</b></p>
+                 <ul>
+                    <p>Lavender - Ginger kombucha from our neighbor at Confluence Kombucha. 7oz</p>
+                </ul>
+            <p><b>Mighty Kind CBD Seltzer | 6.00</b></p>
+                 <ul>
+                    <p>Made in St. Louis, MK is alcohol and sugar-free. Choose from Violet-Mango or Lemon, each with 20mg of organic CBD for calming effects.</p>
+                </ul>
+            <p><b>Matcha Latte | 6.00</b></p>
+                 <ul>
+                    <p>Warm or Iced with Kodemari or Sonogi Matcha.</p>
+                </ul>
+        </ul>
+    </div><br>
+    <div class = "menu_items">
+    <h3 class = "dish_type">Coffee Drinks</h3>
+        <ul>
+            <p><b>Cold Brew Coffee (16o) | 7.00</b></p>
+                 <ul>
+                    <p>Iced cold brew coffee, rotating origin from Blueprint coffee</p>
+                </ul>
+            <p><b>Latte | 6.00</b></p>
+                 <ul>
+                    <p>Espresso and steamed milk. Seasonal flavors available.</p>
+                </ul>
+            <p><b>Chocolate Latte (Mocha) | 7.00</b></p>
+                 <ul>
+                    <p>A classic chocolate latte made with Rolling Lawn chocolate milk.</p>
+                </ul>
+            <p><b>Drip Coffee To Go | 5.00</b></p>
+                 <ul>
+                    <p>Hot drip coffee to go. 10oz or 16oz available.</p>
+                </ul>
+        </ul>
+    </div><br>
+    <div class = "menu_items">
+    <h3 class = "dish_type">Boozy Drinks</h3>
+        <ul>
+            <p><b>Season Shift Sunny Cat | 5.25</b></p>
+                 <ul>
+                    <p>New England style IPA with tangerine notes, brewed in St. Louis MO</p>
+                </ul>
+            <p><b>Mimosa | 10.00</b></p>
+                 <ul>
+                    <p>Non vintage sparkling wine from Cava, Spain with your juice of orange, grapefruit, or pineapple juice from our neighbors at Hello Juice.</p>
+                </ul>
+            <p><b>Latte with a Kick | 8.00</b></p>
+                 <ul>
+                    <p>Classic latte with either Luxardo Amaretto or Tullamore Dew Irish Whiskey</p>
+                </ul>
+        </ul>
+    </div>
+    <h2 class = "dish_type"><u>Gifts</u></h2>
+    <div class = "menu_items">
+        <ul>
+            <p><b>Songbird T-shirt | 11.00</b></p>
+                <ul>
+                    <p>Soft, unisex shirt printed by Tiny Little Monster. Comfortable and pre-shrunk we hope it becomes your new favorite comfy shirt.</p>
+                </ul>
+            <p><b>Songbird Gift Card | 10.00-100.00</b></p>
+                <ul>
+                    <p>Give the gift of Songbird! Our gift card is perfect for any occasion, letting your loved ones enjoy delicious meals at their convenience.</p>
+                </ul>
+        </ul>
+    </div>
+    </div>
+               
+</body>
+</html>
