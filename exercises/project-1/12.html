@@ -158,12 +158,29 @@
             width: 100%;
             height: auto;
             display:block;
-            margin-bottom: 20px;
+            margin-bottom: 20px; 
+            transition: transform 0.3s ease, filter 0.3s ease;
+        }
+
+        .transparent_images:hover {
+            transform: scale(1.05);        
+            filter: drop-shadow(0 12px 20px rgba(0,0,0,0.35));
         }
 
         .menu_image img{
             margin-top: 100px;
             margin-bottom: 10px;
+        }
+
+        .tamale {
+            width: 75%;
+            margin-left: 30px;
+        }
+
+        .gift {
+            border-radius: 1000px;
+            width: 75%;
+            margin-left: 30px;
         }
 
 
@@ -241,11 +258,11 @@
         <div class = "menu_image">
             <img class = "transparent_images" src="mains1.png" alt="Farm Toast" width="500" height="400">
             <img class = "transparent_images" src="mains2.png" alt="Lox" width="500" height="500">
-            <img class = "transparent_images" src="tamale.png" alt="Tamale" width="500" height="500">
+            <img class = "transparent_images tamale" src="tamale.png" alt="Tamale" width="500" height="500">
         </div>
 
     <div class = "menu_text">
-    <h3 class = "dish_type">Mains</h3>
+    <h3 class = "dish_type"><u>Mains</u></h3>
         <ul>
             <p><b>The Combo Breakfast Sandwich | 14.00</b></p>
                 <ul>
@@ -289,7 +306,7 @@
         </div>
     
     <div class = "menu_text">
-    <h3 class = "dish_type">Light Fare</h3>
+    <h3 class = "dish_type"><u>Light Fare</u></h3>
         <ul>
             <p><b>McKaskle Farm Cheddar Grits | 4.00 </b></p>
                  <ul>
@@ -314,14 +331,14 @@
         </ul>
     </div>
     </div>
-    </div>
+
 
     <div class = "menu_items">
         <div class = "menu_image">
             <img class = "transparent_images" src="matcha.png" alt="Farm Toast" width="500" height="400">
         </div>
     <div class = "menu_text">
-    <h3 class = "dish_type">Seasonal Drinks & Mocktails</h3>
+    <h3 class = "dish_type"><u>Seasonal Drinks & Mocktails</u></h3>
         <ul>
             <p><b>Confluence Kombucha | 5.00</b></p>
                  <ul>
@@ -344,7 +361,7 @@
             <img class = "transparent_images" src="coffee2.png" alt="Coffee" width="500" height="400">
         </div>
      <div class = "menu_text">
-    <h3 class = "dish_type">Coffee Drinks</h3>
+    <h3 class = "dish_type"><u>Coffee Drinks</u></h3>
         <ul>
             <p><b>Cold Brew Coffee (16o) | 7.00</b></p>
                  <ul>
@@ -370,7 +387,7 @@
             <img class = "transparent_images" src="booz.png" alt="Boozy Drinks" width="600" height="500">
         </div>
      <div class = "menu_text">
-    <h3 class = "dish_type">Boozy Drinks</h3>
+    <h3 class = "dish_type"><u>Boozy Drinks</u></h3>
         <ul>
             <p><b>Season Shift Sunny Cat | 5.25</b></p>
                  <ul>
@@ -389,6 +406,9 @@
     </div>
     <h2 class = "menutype_text"><u>Gifts</u></h2>
     <div class = "menu_items">
+        <div class = "menu_image">
+            <img class = "transparent_images gift" src="songbird_gift.jpeg" alt="Songbird" width="600" height="500">
+        </div>
         <ul>
             <p><b>Songbird T-shirt | 11.00</b></p>
                 <ul>
@@ -400,7 +420,7 @@
                 </ul>
         </ul>
     </div>
-    </div>
+</div>
                
 </body>
 </html>

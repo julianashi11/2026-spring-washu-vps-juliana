@@ -13,13 +13,19 @@
             background-image: url('background.JPG');
             margin: 25px 25px 25px 25px;
             font-family:'Courier New', Courier, monospace;
-            color: rgb(52, 52, 112)
+            color: rgb(52, 52, 112);
         }
 
         #menu_page {
             background-color: rgb(254, 239, 190);
+            border-width: 20px;
+            border-style: solid;
+            border-image-source: url('border.png');
+            border-image-slice: 30 fill;
+            border-image-repeat: stretch;
             margin: 25px 25px 25px 25px;
-            border-radius: 10px
+            border-radius: 0;
+            padding: 20px;
         }
 
         .menutype_text {
@@ -181,6 +187,16 @@
             border-radius: 1000px;
             width: 75%;
             margin-left: 30px;
+            margin-top: -20px;
+        }
+
+        .bottom_info {
+            bottom: 0;
+            width: 100vw;
+            background-color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 50px;
         }
 
 
@@ -420,6 +436,10 @@
                 </ul>
         </ul>
     </div>
+</div>
+
+<div class = "bottom_info">
+    <p>follow our instagram: @songbird.stl</p>
 </div>
                
 </body>

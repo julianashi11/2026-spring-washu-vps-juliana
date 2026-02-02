@@ -13,14 +13,31 @@
             background-image: url('background.JPG');
             margin: 25px 25px 25px 25px;
             font-family:'Courier New', Courier, monospace;
-            color: rgb(52, 52, 112)
+            color: rgb(52, 52, 112);
         }
 
         #menu_page {
+            position: relative;
             background-color: rgb(254, 239, 190);
-            margin: 25px 25px 25px 25px;
-            border-radius: 10px
+            padding: 40px 20px;
+            margin: 50px;
+            border-radius: 30px;
+            overflow: visible;
         }
+
+        #menu_page::before {
+            content: "";
+            position: absolute;
+            top: -20px; bottom: -20px;
+            left: -20px; right: -20px;
+            background-color: rgb(254, 239, 190);
+            background-image: radial-gradient(circle, rgb(52, 52, 112) 50%, transparent 51%);
+            background-size: 40px 40px;   
+            background-repeat: repeat;    
+            z-index: -1;
+            border-radius: 20px;           
+        }
+        
 
         .menutype_text {
             font-family: "Abril Fatface", serif;
@@ -181,6 +198,16 @@
             border-radius: 1000px;
             width: 75%;
             margin-left: 30px;
+            margin-top: -20px;
+        }
+
+        .bottom_info {
+            bottom: 0;
+            width: 100vw;
+            background-color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 50px;
         }
 
 
@@ -420,6 +447,10 @@
                 </ul>
         </ul>
     </div>
+</div>
+
+<div class = "bottom_info">
+    <p>follow our instagram: @songbird.stl</p>
 </div>
                
 </body>
