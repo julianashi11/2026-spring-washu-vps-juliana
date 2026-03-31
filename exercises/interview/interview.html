@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kona Low — A Story of the Storm</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ocean: #1a3a4a;
+    --deep: #0d2233;
+    --foam: #e8e0d4;
+    --sand: #c9b99a;
+    --rain: #7bafc4;
+    --mist: #a8c4d0;
+    --green: #4a7c59;
+    --accent: #d4956a;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background-color: var(--deep);
+    color: var(--foam);
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    overflow-x: hidden;
+  }
+
+  /* Rain animation */
+  .rain-container {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+  }
+
+  .raindrop {
+    position: absolute;
+    top: -20px;
+    width: 1px;
+    background: linear-gradient(to bottom, transparent, rgba(123, 175, 196, 0.25));
+    animation: fall linear infinite;
+  }
+
+  @keyframes fall {
+    to { transform: translateY(110vh); }
+  }
+
+  /* Hero */
+  .hero {
+    position: relative;
+    z-index: 1;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 80px 10vw;
+    background: radial-gradient(ellipse at 70% 40%, rgba(26,58,74,0.6) 0%, transparent 70%),
+                linear-gradient(160deg, var(--deep) 60%, #0e2f42 100%);
+    border-bottom: 1px solid rgba(123,175,196,0.15);
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    opacity: 0.5;
+    pointer-events: none;
+  }
+
+  .eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--rain);
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    animation: fadeUp 1s ease forwards 0.3s;
+  }
+
+  .hero-title {
+    font-size: clamp(3.5rem, 10vw, 9rem);
+    font-weight: 300;
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.3em;
+    opacity: 0;
+    animation: fadeUp 1.2s ease forwards 0.5s;
+  }
+
+  .hero-title em {
+    font-style: italic;
+    color: var(--rain);
+  }
+
+  .hero-subtitle {
+    font-size: clamp(1rem, 2vw, 1.3rem);
+    font-weight: 300;
+    color: var(--sand);
+    font-style: italic;
+    max-width: 500px;
+    line-height: 1.6;
+    margin-top: 1.5rem;
+    opacity: 0;
+    animation: fadeUp 1.2s ease forwards 0.8s;
+  }
+
+  .scroll-hint {
+    position: absolute;
+    bottom: 40px;
+    left: 10vw;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: rgba(168,196,208,0.5);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    opacity: 0;
+    animation: fadeUp 1s ease forwards 1.4s;
+  }
+
+  .scroll-hint::after {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 1px;
+    background: rgba(168,196,208,0.4);
+    animation: expand 2s ease-in-out infinite;
+  }
+
+  @keyframes expand {
+    0%, 100% { width: 30px; opacity: 0.4; }
+    50% { width: 60px; opacity: 0.8; }
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Interview section */
+  .interview {
+    position: relative;
+    z-index: 1;
+    padding: 100px 0;
+  }
+
+  .qa-block {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 70vh;
+    border-bottom: 1px solid rgba(123,175,196,0.1);
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+
+  .qa-block.visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  .qa-block:nth-child(even) {
+    direction: rtl;
+  }
+
+  .qa-block:nth-child(even) > * {
+    direction: ltr;
+  }
+
+  .q-side {
+    padding: 80px 8vw;
+    background: rgba(26,58,74,0.3);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-right: 1px solid rgba(123,175,196,0.1);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .qa-block:nth-child(even) .q-side {
+    border-right: none;
+    border-left: 1px solid rgba(123,175,196,0.1);
+  }
+
+  .q-side::before {
+    content: attr(data-num);
+    position: absolute;
+    top: 40px;
+    right: 40px;
+    font-family: 'DM Mono', monospace;
+    font-size: 4rem;
+    color: rgba(123,175,196,0.06);
+    font-weight: 400;
+    line-height: 1;
+  }
+
+  .q-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.5rem;
+  }
+
+  .question-text {
+    font-size: clamp(1.2rem, 2.2vw, 1.7rem);
+    font-weight: 300;
+    font-style: italic;
+    line-height: 1.5;
+    color: var(--foam);
+  }
+
+  .a-side {
+    padding: 80px 8vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: rgba(13,34,51,0.4);
+  }
+
+  .a-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--rain);
+    margin-bottom: 1.5rem;
+  }
+
+  .answer-text {
+    font-size: clamp(1rem, 1.5vw, 1.25rem);
+    font-weight: 300;
+    line-height: 1.85;
+    color: var(--sand);
+  }
+
+  .answer-text strong {
+    color: var(--foam);
+    font-weight: 400;
+  }
+
+  /* Hawaiian word highlights */
+  .hawaiian {
+    color: var(--mist);
+    font-style: italic;
+  }
+
+  /* Footer */
+  footer {
+    position: relative;
+    z-index: 1;
+    padding: 80px 10vw;
+    text-align: center;
+    border-top: 1px solid rgba(123,175,196,0.1);
+  }
+
+  .footer-wave {
+    font-size: clamp(2rem, 5vw, 4rem);
+    font-weight: 300;
+    font-style: italic;
+    color: var(--rain);
+    margin-bottom: 1rem;
+    letter-spacing: -0.02em;
+  }
+
+  .footer-text {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: rgba(168,196,208,0.4);
+  }
+
+  /* Mobile */
+  @media (max-width: 768px) {
+    .qa-block {
+      grid-template-columns: 1fr;
+      min-height: auto;
+    }
+
+    .qa-block:nth-child(even) {
+      direction: ltr;
+    }
+
+    .q-side {
+      padding: 50px 7vw 30px;
+      border-right: none;
+      border-bottom: 1px solid rgba(123,175,196,0.1);
+    }
+
+    .qa-block:nth-child(even) .q-side {
+      border-left: none;
+    }
+
+    .a-side {
+      padding: 30px 7vw 50px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- Rain effect -->
+<div class="rain-container" id="rain"></div>
+
+<!-- Hero -->
+<section class="hero">
+  <p class="eyebrow">A conversation about the storm</p>
+  <h1 class="hero-title"><em>Kona</em><br>Low</h1>
+  <p class="hero-subtitle">An intimate account of the storm that stopped Hawaii — through the eyes of someone who has called the islands home for 35 years.</p>
+  <div class="scroll-hint">Read on</div>
+</section>
+
+<!-- Interview -->
+<section class="interview" id="interview">
+
+  <div class="qa-block" data-num="01">
+    <div class="q-side" data-num="01">
+      <span class="q-label">Question 01</span>
+      <p class="question-text">When did you know this Kona Low was serious?</p>
+    </div>
+    <div class="a-side">
+      <span class="a-label">Answer</span>
+      <p class="answer-text">I started to notice that this storm was serious when our company was notified that work had been cancelled that day. In my <strong>35 years living in Hawaiʻi</strong>, never once has work been cancelled due to a storm. This was the first in forever, and that was when I knew there was something truly wrong.</p>
+    </div>
+  </div>
+
+  <div class="qa-block">
+    <div class="q-side" data-num="02">
+      <span class="q-label">Question 02</span>
+      <p class="question-text">If you had to describe the 'personality' of this specific storm — was it an angry guest or a cleansing force?</p>
+    </div>
+    <div class="a-side">
+      <span class="a-label">Answer</span>
+      <p class="answer-text">That is a complicated question that has a complicated answer. In the moment, it was definitely <strong>angry</strong>. It displaced many individuals on the North Shore and caused animals to fend for themselves. After the first wave, we thought the storm was gone — but when the second wave came, I truly believed there was some spirit that was angry at us. However, who knows… in the future the amount of rain could provide nourishment to our <span class="hawaiian">ʻāina</span>, allowing our crops and plants to flourish.</p>
+    </div>
+  </div>
+
+  <div class="qa-block">
+    <div class="q-side" data-num="03">
+      <span class="q-label">Question 03</span>
+      <p class="question-text">How did your household react to the storm?</p>
+    </div>
+    <div class="a-side">
+      <span class="a-label">Answer</span>
+      <p class="answer-text">Your dogs were frightened. We let them play in the yard every day, but on the day of the storm, they were <strong>shivering</strong>, waiting to be let back in the house. Even they knew something was wrong. Though we weren't impacted too badly, your mom, sister, and grandma still worried for those on the North Shore. We also had an outage which was annoying — but luckily we have a gas stove to cook food on.</p>
+    </div>
+  </div>
+
+  <div class="qa-block">
+    <div class="q-side" data-num="04">
+      <span class="q-label">Question 04</span>
+      <p class="question-text">How did the <span class="hawaiian">ʻāina</span> react to the storm?</p>
+    </div>
+    <div class="a-side">
+      <span class="a-label">Answer</span>
+      <p class="answer-text">The <span class="hawaiian">ʻāina</span> was for sure not prepared for the immense amount of rain that would fall. The mountain ridges like <strong>Koʻolau</strong> could not handle the 10+ inches of rain that was impended upon the land.</p>
+    </div>
+  </div>
+
+  <div class="qa-block">
+    <div class="q-side" data-num="05">
+      <span class="q-label">Question 05</span>
+      <p class="question-text">How did the community show the spirit of <span class="hawaiian">Kōkua</span> (help) or <span class="hawaiian">Lokahi</span> (unity) once the rain stopped?</p>
+    </div>
+    <div class="a-side">
+      <span class="a-label">Answer</span>
+      <p class="answer-text">After the storm, I saw people coming together as a community to clean neighborhoods and provide <span class="hawaiian">ʻohana</span> to those who might have lost something. It was truly wonderful seeing people <strong>drive all the way to the North Shore</strong> just to help individuals who lost their homes — to clean the mud off their belongings.</p>
+    </div>
+  </div>
+
+  <div class="qa-block">
+    <div class="q-side" data-num="06">
+      <span class="q-label">Question 06</span>
+      <p class="question-text">What is your reflection on this storm?</p>
+    </div>
+    <div class="a-side">
+      <span class="a-label">Answer</span>
+      <p class="answer-text">I believe that this storm taught us that <strong>in the bad, there always comes good</strong>. After the tragic storm, people came together as one <span class="hawaiian">ʻohana</span>. No matter how bad something our island goes through, there will always be a helping hand. That is what I love about the <span class="hawaiian">aloha spirit</span> our home embodies.</p>
+    </div>
+  </div>
+
+  <div class="qa-block">
+    <div class="q-side" data-num="07">
+      <span class="q-label">Question 07</span>
+      <p class="question-text">How does it change your perspective on life?</p>
+    </div>
+    <div class="a-side">
+      <span class="a-label">Answer</span>
+      <p class="answer-text">This storm taught me to <strong>appreciate life a little more</strong>. As these storms can be life-threatening, I realized that moments spent with family and friends should be cherished.</p>
+    </div>
+  </div>
+
+</section>
+
+<footer>
+  <p class="footer-wave">Mahalo</p>
+  <p class="footer-text">A reflection on the Kona Low &nbsp;·&nbsp; Hawaiʻi</p>
+</footer>
+
+<script>
+ 
+
+  // Scroll reveal
+  const blocks = document.querySelectorAll('.qa-block');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+
+  blocks.forEach(b => observer.observe(b));
+</script>
+</body>
+</html>
