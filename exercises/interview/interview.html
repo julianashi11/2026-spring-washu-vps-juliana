@@ -3,52 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kona Low — A Story of the Storm</title>
+<title>The Kona Low</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --ocean: #1a3a4a;
-    --deep: #0d2233;
-    --foam: #e8e0d4;
-    --sand: #c9b99a;
-    --rain: #7bafc4;
-    --mist: #a8c4d0;
-    --green: #4a7c59;
-    --accent: #d4956a;
-  }
 
-  * { margin: 0; padding: 0; box-sizing: border-box; }
 
   body {
-    background-color: var(--deep);
-    color: var(--foam);
+    background-color: #89CFF0;
     font-family: 'Cormorant Garamond', Georgia, serif;
     overflow-x: hidden;
   }
 
-  /* Rain animation */
-  .rain-container {
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    pointer-events: none;
-    z-index: 0;
-    overflow: hidden;
-  }
-
-  .raindrop {
-    position: absolute;
-    top: -20px;
-    width: 1px;
-    background: linear-gradient(to bottom, transparent, rgba(123, 175, 196, 0.25));
-    animation: fall linear infinite;
-  }
-
-  @keyframes fall {
-    to { transform: translateY(110vh); }
-  }
-
-  /* Hero */
   .hero {
     position: relative;
     z-index: 1;
@@ -58,18 +23,7 @@
     justify-content: center;
     align-items: flex-start;
     padding: 80px 10vw;
-    background: radial-gradient(ellipse at 70% 40%, rgba(26,58,74,0.6) 0%, transparent 70%),
-                linear-gradient(160deg, var(--deep) 60%, #0e2f42 100%);
     border-bottom: 1px solid rgba(123,175,196,0.15);
-  }
-
-  .hero::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-    opacity: 0.5;
-    pointer-events: none;
   }
 
   .eyebrow {
@@ -79,8 +33,6 @@
     text-transform: uppercase;
     color: var(--rain);
     margin-bottom: 1.5rem;
-    opacity: 0;
-    animation: fadeUp 1s ease forwards 0.3s;
   }
 
   .hero-title {
@@ -89,8 +41,6 @@
     line-height: 0.95;
     letter-spacing: -0.02em;
     margin-bottom: 0.3em;
-    opacity: 0;
-    animation: fadeUp 1.2s ease forwards 0.5s;
   }
 
   .hero-title em {
@@ -106,8 +56,6 @@
     max-width: 500px;
     line-height: 1.6;
     margin-top: 1.5rem;
-    opacity: 0;
-    animation: fadeUp 1.2s ease forwards 0.8s;
   }
 
   .scroll-hint {
@@ -122,8 +70,6 @@
     display: flex;
     align-items: center;
     gap: 12px;
-    opacity: 0;
-    animation: fadeUp 1s ease forwards 1.4s;
   }
 
   .scroll-hint::after {
@@ -132,20 +78,8 @@
     width: 40px;
     height: 1px;
     background: rgba(168,196,208,0.4);
-    animation: expand 2s ease-in-out infinite;
   }
 
-  @keyframes expand {
-    0%, 100% { width: 30px; opacity: 0.4; }
-    50% { width: 60px; opacity: 0.8; }
-  }
-
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  /* Interview section */
   .interview {
     position: relative;
     z-index: 1;
@@ -157,22 +91,6 @@
     grid-template-columns: 1fr 1fr;
     min-height: 70vh;
     border-bottom: 1px solid rgba(123,175,196,0.1);
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.8s ease, transform 0.8s ease;
-  }
-
-  .qa-block.visible {
-    opacity: 1;
-    transform: none;
-  }
-
-  .qa-block:nth-child(even) {
-    direction: rtl;
-  }
-
-  .qa-block:nth-child(even) > * {
-    direction: ltr;
   }
 
   .q-side {
@@ -186,22 +104,6 @@
     overflow: hidden;
   }
 
-  .qa-block:nth-child(even) .q-side {
-    border-right: none;
-    border-left: 1px solid rgba(123,175,196,0.1);
-  }
-
-  .q-side::before {
-    content: attr(data-num);
-    position: absolute;
-    top: 40px;
-    right: 40px;
-    font-family: 'DM Mono', monospace;
-    font-size: 4rem;
-    color: rgba(123,175,196,0.06);
-    font-weight: 400;
-    line-height: 1;
-  }
 
   .q-label {
     font-family: 'DM Mono', monospace;
@@ -243,85 +145,16 @@
     line-height: 1.85;
     color: var(--sand);
   }
-
-  .answer-text strong {
-    color: var(--foam);
-    font-weight: 400;
-  }
-
-  /* Hawaiian word highlights */
-  .hawaiian {
-    color: var(--mist);
-    font-style: italic;
-  }
-
-  /* Footer */
-  footer {
-    position: relative;
-    z-index: 1;
-    padding: 80px 10vw;
-    text-align: center;
-    border-top: 1px solid rgba(123,175,196,0.1);
-  }
-
-  .footer-wave {
-    font-size: clamp(2rem, 5vw, 4rem);
-    font-weight: 300;
-    font-style: italic;
-    color: var(--rain);
-    margin-bottom: 1rem;
-    letter-spacing: -0.02em;
-  }
-
-  .footer-text {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.65rem;
-    letter-spacing: 0.25em;
-    text-transform: uppercase;
-    color: rgba(168,196,208,0.4);
-  }
-
-  /* Mobile */
-  @media (max-width: 768px) {
-    .qa-block {
-      grid-template-columns: 1fr;
-      min-height: auto;
-    }
-
-    .qa-block:nth-child(even) {
-      direction: ltr;
-    }
-
-    .q-side {
-      padding: 50px 7vw 30px;
-      border-right: none;
-      border-bottom: 1px solid rgba(123,175,196,0.1);
-    }
-
-    .qa-block:nth-child(even) .q-side {
-      border-left: none;
-    }
-
-    .a-side {
-      padding: 30px 7vw 50px;
-    }
-  }
 </style>
 </head>
 <body>
 
-<!-- Rain effect -->
-<div class="rain-container" id="rain"></div>
-
-<!-- Hero -->
 <section class="hero">
   <p class="eyebrow">A conversation about the storm</p>
   <h1 class="hero-title"><em>Kona</em><br>Low</h1>
-  <p class="hero-subtitle">An intimate account of the storm that stopped Hawaii — through the eyes of someone who has called the islands home for 35 years.</p>
-  <div class="scroll-hint">Read on</div>
+  <p class="hero-subtitle">From the perspective of my father</p>
 </section>
 
-<!-- Interview -->
 <section class="interview" id="interview">
 
   <div class="qa-block" data-num="01">
@@ -403,25 +236,5 @@
 
 </section>
 
-<footer>
-  <p class="footer-wave">Mahalo</p>
-  <p class="footer-text">A reflection on the Kona Low &nbsp;·&nbsp; Hawaiʻi</p>
-</footer>
-
-<script>
- 
-
-  // Scroll reveal
-  const blocks = document.querySelectorAll('.qa-block');
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.classList.add('visible');
-      }
-    });
-  }, { threshold: 0.1 });
-
-  blocks.forEach(b => observer.observe(b));
-</script>
 </body>
 </html>
